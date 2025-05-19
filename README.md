@@ -1,25 +1,103 @@
-Dynamic Code Reveal Over User Video
-This web application creates a striking "Dynamic Code Reveal" animation. It uses a user-imported video as a dynamic, blurred background. Scrolling or static code-like text is then revealed based on the video's luminance, creating an effect where the code appears through the brighter (or darker) parts of the video.
-The project features a modern, responsive, iOS-inspired graphical user interface (GUI) for controlling various aspects of the animation.
-Key Features:
-Dynamic Text Reveal: Code text is revealed or hidden based on the luminance of the underlying video pixels.
-User Video Import: Easily upload your own video to serve as the animation's background and luminance source.
-Blurred Video Background: The uploaded video is used as a heavily blurred, animated backdrop.
-Sophisticated GUI:
-Video Upload: Simple interface for selecting local video files.
-Luminance Control: Adjust the threshold for text reveal and invert the mask (reveal in light or dark areas).
-Softness Control: Toggle between a hard cut-off or a soft, feathered reveal for the text, with adjustable softness.
-Text Styling: Select font families and scale the code text.
-Blur Control: Adjust the amount of Gaussian blur applied to the background video. The blur is edge-clamped to maintain sharp video boundaries.
-Playback Controls: Rewind, Play/Pause, and Fast-Forward the video.
-Debug View: Toggle a visual representation of the luminance mask.
-Theme Toggle: Switch between Light and Dark UI modes.
-Responsive Design: The layout adapts for optimal viewing on desktop, tablet, and mobile devices.
-Performance: Uses HTML5 Canvas for efficient real-time video processing and rendering.
-How It Works:
-The application continuously analyzes video frames on an offscreen canvas to determine luminance values. This data is then used to modulate the alpha (opacity) of individual characters of generated pseudo-code, which are drawn onto the main canvas. The background video is processed separately to create a padded, edge-clamped blur effect, ensuring sharp video edges even with significant blur.
-Built with HTML5 Canvas, CSS3 (featuring custom properties, flexbox, and responsive design), and modern JavaScript (ES6+).
-Optional additions you might consider:
-A "Live Demo" link if you host it on GitHub Pages or elsewhere.
-A "To-Do" or "Future Enhancements" section if you plan to add more features (like custom code input, presets, code flicker, etc.).
-A "Screenshots" section with a couple of appealing images of the app in action.
+# Dynamic Code Reveal Over User Video
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+Create a striking **dynamic code reveal** animation that blends scrolling pseudo‑code with the luminance of any video you provide.
+
+![Demo GIF](docs/demo.gif)
+
+## Table of Contents
+
+* [Features](#features)
+* [Live Demo](#live-demo)
+* [Getting Started](#getting-started)
+* [Usage](#usage)
+* [How It Works](#how-it-works)
+* [Roadmap](#roadmap)
+* [Screenshots](#screenshots)
+* [License](#license)
+
+## Features
+
+* **Dynamic Text Reveal** – Code characters fade in/out based on the luminance of the underlying video.
+* **User Video Import** – Upload any local video as the background & luminance source.
+* **Blurred Video Background** – Edge‑clamped Gaussian blur keeps borders crisp.
+* **Sophisticated GUI**
+
+  * Video upload dialog
+  * Luminance threshold & inversion
+  * Softness (hard / feathered) control
+  * Font family & size selection
+  * Blur amount slider
+  * Playback controls (⏪ ▶️ ⏩)
+  * Debug mask overlay
+  * Light / dark theme toggle
+* **Responsive Design** – Works seamlessly on desktop, tablet & mobile.
+* **High Performance** – Real‑time processing with HTML5 Canvas & modern JavaScript.
+
+## Live Demo
+
+> **Try it now:** [*Dynamic Code Reveal on GitHub Pages*](https://your‑username.github.io/dynamic‑code‑reveal/)
+> *(or clone the repo and open `index.html` locally)*
+
+## Getting Started
+
+### Prerequisites
+
+No build tools required – everything runs in the browser.
+
+### Installation
+
+```bash
+git clone https://github.com/your‑username/dynamic‑code‑reveal.git
+cd dynamic‑code‑reveal
+open index.html   # or just serve the folder with your favourite dev server
+```
+
+### Folder Structure
+
+```
+dynamic‑code‑reveal/
+├── src/
+│   ├── app.js
+│   └── styles.css
+├── assets/
+│   └── icons/
+├── docs/
+│   └── demo.gif
+└── index.html
+```
+
+## Usage
+
+1. Click **Upload Video** and choose any short MP4/WEBM file.
+2. Tweak the **Luminance Threshold** to decide where the code becomes visible.
+3. (Optional) Flip **Invert Mask** to reveal code in dark areas instead of light.
+4. Adjust **Blur**, **Softness**, and **Font** to taste.
+5. Share a screen recording of the result – it looks great on social media! 🎥✨
+
+## How It Works
+
+Each video frame is drawn to an off‑screen canvas where per‑pixel luminance is sampled.
+The luminance array drives the alpha channel of an overlay of generated pseudo‑code on the main canvas, revealing characters only where the threshold is met.
+Separately, the background video undergoes a padded, edge‑clamped Gaussian blur so that even heavy blur never shows transparent edges.
+
+Built with **HTML5 Canvas**, **CSS Custom Properties**, **Flexbox**, and **ES6+** JavaScript. No external dependencies.
+
+## Roadmap
+
+* [ ] Custom code input & presets
+* [ ] Code “flicker” animation option
+* [ ] Support for looping GIF backgrounds
+* [ ] Export to MP4/GIF
+  *Pull requests are welcome!*
+
+## Screenshots
+
+| Light Theme                         | Dark Theme                        |
+| ----------------------------------- | --------------------------------- |
+| ![Light](docs/screenshot‑light.png) | ![Dark](docs/screenshot‑dark.png) |
+
+## License
+
+Distributed under the MIT License. See [`LICENSE`](LICENSE) for more information.
