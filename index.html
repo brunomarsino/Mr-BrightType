@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Code Reveal Animation</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <div id="app-container">
+        <div id="video-section-container">
+            <canvas id="animationCanvas"></canvas>
+        </div>
+        <div id="custom-gui-container">
+            <div class="gui-panel">
+                <div class="gui-header">
+                    <h2>Controls</h2>
+                    <div class="header-buttons">
+                        <button id="themeToggleButton" title="Toggle Theme">☀️</button> <!-- Icon can be ☀️/🌙 -->
+                    </div>
+                </div>
+                <div class="gui-content">
+                    <!-- Video Input Section -->
+                    <div class="gui-section">
+                        <h3 class="gui-section-header">Video Source</h3>
+                        <div class="gui-section-content">
+                            <div class="gui-control" id="fileInputContainer">
+                                <label for="videoFile" class="gui-button-like">Upload Video</label>
+                                <input type="file" id="videoFile" accept="video/*">
+                                <!-- <span class="gui-status-text" id="videoFileName">No video selected</span> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Masking Controls Section -->
+                    <div class="gui-section">
+                        <h3 class="gui-section-header">Masking Controls</h3>
+                        <div class="gui-section-content">
+                            <div class="gui-control">
+                                <label for="darknessThreshold">Luminance Threshold: <span id="thresholdValue">50</span></label>
+                                <input type="range" id="darknessThreshold" min="0" max="255" value="50" step="1">
+                            </div>
+                            <div class="gui-control">
+                                <button id="invertMaskButton">Reveal in Light Areas</button>
+                            </div>
+                            <div class="gui-control">
+                                <button id="debugMaskToggleButton" class="gui-button-like">Show Mask Debug</button>
+                            </div>
+                            <div class="gui-control">
+                                <label for="softnessSlider">Reveal Softness: <span id="softnessValue">68</span>%</label>
+                                <input type="range" id="softnessSlider" min="0" max="150" value="68" step="1">
+                            </div>
+                            <div class="gui-control">
+                                <button id="toggleSoftnessModeButton" class="gui-button-like">Use Hard Threshold</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text Style Section -->
+                    <div class="gui-section">
+                        <h3 class="gui-section-header">Text Style</h3>
+                        <div class="gui-section-content">
+                            <div class="gui-control">
+                                <label for="fontFamily">Font Family</label>
+                                <select id="fontFamily">
+                                    <option value="'Consolas', Monaco, 'Andale Mono', 'Ubuntu Mono', monospace">Consolas/Monaco</option>
+                                    <option value="'Courier New', Courier, monospace">Courier New</option>
+                                    <option value="'Lucida Console', 'DejaVu Sans Mono', monospace">Lucida Console</option>
+                                </select>
+                            </div>
+                            <div class="gui-control">
+                                <label for="textScale">Text Scale: <span id="scaleValue">1.0</span></label>
+                                <input type="range" id="textScale" min="0.5" max="2.5" value="1" step="0.1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Effects Section -->
+                    <div class="gui-section">
+                        <h3 class="gui-section-header">Visual Effects</h3>
+                        <div class="gui-section-content">
+                            <div class="gui-control">
+                                <label for="videoBlurAmount">Video Blur: <span id="blurValue">14</span>px</label>
+                                <input type="range" id="videoBlurAmount" min="0" max="50" value="14" step="1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Playback Controls Section -->
+                    <div class="gui-section">
+                        <h3 class="gui-section-header">Playback Controls</h3>
+                        <div class="gui-section-content" style="display: flex; justify-content: space-around; align-items: center;">
+                            <button id="rewindButton" class="gui-button-like playback-icon-button" title="Rewind 10s">⏪</button>
+                            <button id="playPauseButton" class="gui-button-like playback-icon-button" title="Play/Pause">▶️</button>
+                            <button id="forwardButton" class="gui-button-like playback-icon-button" title="Forward 15s">⏩</button>
+                        </div>
+                    </div>
+
+                </div> <!-- end gui-content -->
+            </div> <!-- end gui-panel -->
+        </div> <!-- end custom-gui-container -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

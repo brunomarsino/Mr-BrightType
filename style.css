@@ -1,0 +1,783 @@
+/* gui_styles.css - iOS Inspired Redesign */
+
+:root {
+    /* Typography */
+    --font-family-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* Radii */
+    --radius-large: 22px; /* Prominent rounded corners for panels/cards */
+    --radius-medium: 12px; /* For internal elements like sections */
+    --radius-small: 8px;  /* For buttons, inputs */
+    --radius-pill: 100px; /* For pill-shaped elements if needed */
+
+    /* Transitions & Animations */
+    --transition-duration-fast: 0.15s;
+    --transition-duration-medium: 0.25s;
+    --transition-duration-slow: 0.4s;
+    --ease-out-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Spring-like easing */
+    --ease-out-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    /* --- Light Theme Variables --- */
+    --bg-color-light-theme: #f0f2f5;
+    --bg-gradient-light-theme: linear-gradient(135deg, #e6e9f0 0%, #f5f7fa 100%);
+    --panel-bg-color-light-theme: rgba(255, 255, 255, 0.409);
+    --panel-blur-light-theme: 18px;
+    --panel-border-color-light-theme: rgba(173, 173, 173, 0.3);
+    --panel-shadow-light-theme: 0 10px 30px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0,0,0,0.05);
+    --section-bg-color-light-theme: rgba(255, 255, 255, 0.779);
+    --section-border-color-light-theme: rgba(200, 200, 200, 0.2);
+    --text-color-primary-light-theme: #1d1d1f;
+    --text-color-secondary-light-theme: #6e6e73;
+    --text-color-accent-light-theme: #007AFF;
+    --text-color-on-accent-light-theme: #ffffff;
+    --control-bg-light-theme: rgba(120, 120, 128, 0.12);
+    --control-bg-hover-light-theme: rgba(120, 120, 128, 0.20);
+    --control-border-light-theme: transparent;
+    --control-accent-bg-light-theme: var(--text-color-accent-light-theme);
+    --control-accent-bg-hover-light-theme: #0056b3;
+    --focus-ring-color-light-theme: rgba(0, 122, 255, 0.5);
+    --scrollbar-thumb-light-theme: rgba(0, 0, 0, 0.2);
+    --scrollbar-thumb-hover-light-theme: rgba(0, 0, 0, 0.3);
+
+    /* --- Dark Theme Variables --- */
+    --bg-color-dark-theme: #1c1c1e;
+    --bg-gradient-dark-theme: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 100%);
+    --panel-bg-color-dark-theme: rgba(44, 44, 46, 0.75); /* Slightly more opaque for better glass effect on dark */
+    --panel-blur-dark-theme: 22px; /* Slightly more blur */
+    --panel-border-color-dark-theme: rgba(80, 80, 82, 0.5); /* Adjusted border */
+    --panel-shadow-dark-theme: 0 12px 40px rgba(0, 0, 0, 0.35), 0 1px 4px rgba(0,0,0,0.15);
+    --section-bg-color-dark-theme: rgba(28, 28, 30, 0.8); 
+    --section-border-color-dark-theme: rgba(80, 80, 82, 0.35);
+    --text-color-primary-dark-theme: #f5f5f7;
+    --text-color-secondary-dark-theme: #8e8e93;
+    --text-color-accent-dark-theme: #0A84FF;
+    --text-color-on-accent-dark-theme: #ffffff;
+    --control-bg-dark-theme: rgba(120, 120, 128, 0.24);
+    --control-bg-hover-dark-theme: rgba(120, 120, 128, 0.32);
+    --control-border-dark-theme: transparent;
+    --control-accent-bg-dark-theme: var(--text-color-accent-dark-theme);
+    --control-accent-bg-hover-dark-theme: #0059c8;
+    --focus-ring-color-dark-theme: rgba(10, 132, 255, 0.6);
+    --scrollbar-thumb-dark-theme: rgba(255, 255, 255, 0.25);
+    --scrollbar-thumb-hover-dark-theme: rgba(255, 255, 255, 0.35);
+
+    /* --- Set Default Theme (Light) --- */
+    --bg-color: var(--bg-color-light-theme);
+    --bg-gradient: var(--bg-gradient-light-theme);
+    --panel-bg-color: var(--panel-bg-color-light-theme);
+    --panel-blur: var(--panel-blur-light-theme);
+    --panel-border-color: var(--panel-border-color-light-theme);
+    --panel-shadow: var(--panel-shadow-light-theme);
+    --section-bg-color: var(--section-bg-color-light-theme);
+    --section-border-color: var(--section-border-color-light-theme);
+    --text-color-primary: var(--text-color-primary-light-theme);
+    --text-color-secondary: var(--text-color-secondary-light-theme);
+    --text-color-accent: var(--text-color-accent-light-theme);
+    --text-color-on-accent: var(--text-color-on-accent-light-theme);
+    --control-bg: var(--control-bg-light-theme);
+    --control-bg-hover: var(--control-bg-hover-light-theme);
+    --control-border: var(--control-border-light-theme);
+    --control-accent-bg: var(--control-accent-bg-light-theme);
+    --control-accent-bg-hover: var(--control-accent-bg-hover-light-theme);
+    --focus-ring-color: var(--focus-ring-color-light-theme);
+    --scrollbar-thumb: var(--scrollbar-thumb-light-theme);
+    --scrollbar-thumb-hover: var(--scrollbar-thumb-hover-light-theme);
+
+    /* Unified Button Colors */
+    --button-unified-text-color: #FFFFFF;
+    --button-unified-bg: #BEBEBE;       /* MODIFIED - Darker light grey */
+    --button-unified-bg-hover: #B0B0B0; /* MODIFIED - Darker hover grey */
+    --button-unified-bg-active: #A0A0A0;  /* MODIFIED - Darker active grey */
+}
+
+/* --- Global Styles --- */
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* Prevent body scrollbars */
+}
+
+body {
+    font-family: var(--font-family-main);
+    font-weight: var(--font-weight-regular);
+    background-color: var(--bg-color);
+    background-image: var(--bg-gradient);
+    color: var(--text-color-primary);
+    line-height: 1.5;
+    display: flex; /* Make body a flex container for app-container */
+    flex-direction: column; /* Ensure app-container can take full height */
+    transition: background-color var(--transition-duration-medium) ease-out, color var(--transition-duration-medium) ease-out;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    --bg-color: var(--bg-color-dark-theme);
+    --bg-gradient: var(--bg-gradient-dark-theme);
+    --panel-bg-color: var(--panel-bg-color-dark-theme);
+    --panel-blur: var(--panel-blur-dark-theme);
+    --panel-border-color: var(--panel-border-color-dark-theme);
+    --panel-shadow: var(--panel-shadow-dark-theme);
+    --section-bg-color: var(--section-bg-color-dark-theme);
+    --section-border-color: var(--section-border-color-dark-theme);
+    --text-color-primary: var(--text-color-primary-dark-theme);
+    --text-color-secondary: var(--text-color-secondary-dark-theme);
+    --text-color-accent: var(--text-color-accent-dark-theme);
+    --text-color-on-accent: var(--text-color-on-accent-dark-theme);
+    --control-bg: var(--control-bg-dark-theme);
+    --control-bg-hover: var(--control-bg-hover-dark-theme);
+    --control-border: var(--control-border-dark-theme);
+    --control-accent-bg: var(--control-accent-bg-dark-theme);
+    --control-accent-bg-hover: var(--control-accent-bg-hover-dark-theme);
+    --focus-ring-color: var(--focus-ring-color-dark-theme);
+    --scrollbar-thumb: var(--scrollbar-thumb-dark-theme);
+    --scrollbar-thumb-hover: var(--scrollbar-thumb-hover-dark-theme);
+}
+
+/* --- App Layout --- */
+#app-container {
+    display: flex;
+    flex-direction: row; /* Desktop: side-by-side */
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevent app-container scrollbars */
+}
+
+#video-section-container {
+    flex-grow: 1; /* Takes up remaining space */
+    position: relative; /* For absolute positioning of canvas inside */
+    overflow: hidden; /* Clip canvas if it's larger due to aspect ratio differences */
+    display: flex; /* To center canvas if needed, though JS will handle video placement */
+    justify-content: center;
+    align-items: center;
+}
+
+#animationCanvas {
+    display: block; /* Default, good for canvas */
+    /* position: absolute; top: 0; left: 0; width: 100%; height: 100%; */ /* JS will set size & position now */
+    /* z-index: 1; REMOVED - not needed here */
+}
+
+/* --- Main GUI Panel Adjustments --- */
+#custom-gui-container {
+    /* position: fixed; top: 20px; right: 20px; z-index: 1001; REMOVED for flex layout */
+    width: 340px;
+    flex-shrink: 0; /* Prevent shrinking */
+    height: 100vh; /* Full viewport height */
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: width var(--transition-duration-medium) var(--ease-out-smooth);
+    /* background-color: var(--panel-bg-color); Ensure panel has a distinct bg if needed outside .gui-panel */
+}
+
+.gui-panel {
+    background-color: var(--panel-bg-color);
+    backdrop-filter: blur(var(--panel-blur)) saturate(180%);
+    -webkit-backdrop-filter: blur(var(--panel-blur)) saturate(180%); /* Safari */
+    border: 1px solid var(--panel-border-color);
+    border-radius: var(--radius-large);
+    box-shadow: var(--panel-shadow);
+    overflow: hidden; /* Important for rounded corners and backdrop-filter */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Panel takes up available space in container */
+    height: 100%; /* Make panel fill the container height */
+}
+
+/* --- Panel Header --- */
+.gui-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px; /* Increased padding */
+    border-bottom: 1px solid var(--panel-border-color);
+    /* cursor: default; */ /* No longer grab; toggle button is explicit */
+}
+
+.header-buttons { /* New wrapper for header buttons */
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between theme toggle and minimize button */
+}
+
+.gui-header h2 {
+    margin: 0;
+    font-size: 18px; /* Larger title */
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-color-primary);
+}
+
+#toggle-gui-panel,
+#themeToggleButton { /* Apply common styles to both buttons */
+    background: var(--control-bg);
+    border: none;
+    font-size: 16px; /* Adjust if icons need different size */
+    font-weight: var(--font-weight-medium);
+    color: var(--text-color-secondary);
+    cursor: pointer;
+    padding: 6px 10px; /* Consistent padding */
+    border-radius: var(--radius-small);
+    line-height: 1; /* Ensure vertical centering of text/icons */
+    display: flex; /* To center icon/text if needed */
+    align-items: center;
+    justify-content: center;
+    min-width: 36px; /* Ensure a decent minimum tap/click area, adjust as needed */
+    min-height: 30px; /* Consistent height */
+    transition: background-color var(--transition-duration-fast) ease-out,
+                transform var(--transition-duration-fast) var(--ease-out-spring),
+                color var(--transition-duration-fast) ease-out;
+}
+
+#themeToggleButton:hover { /* Common hover styles */
+    background: var(--control-bg-hover);
+    color: var(--text-color-primary);
+    transform: scale(1.1);
+}
+
+#themeToggleButton:active {
+    background: var(--control-bg); 
+    color: var(--text-color-primary);
+    transform: scale(0.95);
+}
+
+/* --- GUI Content Area (Scrollable) --- */
+.gui-content {
+    padding: 10px; /* Reduced padding as sections will have their own */
+    overflow-y: auto;
+    flex-grow: 1;
+    display: block;
+    /* max-height: 1000px; REMOVED */
+    /* opacity: 1; REMOVED */
+}
+
+/* --- Sections --- */
+.gui-section {
+    background-color: var(--section-bg-color);
+    border-radius: var(--radius-medium);
+    margin-bottom: 15px; /* Increased from 12px, provides space between sections */
+    border: 1px solid var(--section-border-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03); /* Subtle shadow for depth */
+    transition: background-color var(--transition-duration-medium) ease-out;
+}
+
+.gui-section:last-child {
+    /* border-bottom: none; /* Optional: remove border for last section header if content is also bottom-most */
+}
+
+.gui-section-header {
+    background-color: transparent; /* Header inherits section translucent bg */
+    padding: 12px 16px;
+    margin: 0;
+    font-size: 15px; /* Slightly smaller section headers */
+    font-weight: var(--font-weight-medium);
+    color: var(--text-color-primary);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--section-border-color);
+    transition: border-color var(--transition-duration-medium) ease-out;
+}
+.gui-section-header::after {
+    content: '\25BC'; /* Down arrow */
+    font-size: 10px;
+    color: var(--text-color-secondary);
+    transition: transform var(--transition-duration-fast) var(--ease-out-smooth);
+}
+
+.gui-section-header.collapsed::after {
+    transform: rotate(-90deg);
+}
+
+.gui-section-content {
+    padding: 12px 15px; /* Consistent padding */
+    padding-bottom: 15px; /* Ensure space after the last control */
+    display: block; /* Was flex, block is simpler if children handle their layout */
+    transition: opacity var(--transition-duration-medium) var(--ease-out-smooth), 
+                max-height var(--transition-duration-medium) var(--ease-out-smooth),
+                padding-top var(--transition-duration-medium) var(--ease-out-smooth),
+                padding-bottom var(--transition-duration-medium) var(--ease-out-smooth);
+    max-height: 1000px; /* For collapse transition, adjust if content is taller */
+    opacity: 1;
+    overflow: hidden; /* Crucial for smooth max-height animation and no content spill */
+}
+
+.gui-section-content.collapsed {
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow: hidden; /* Ensure it stays hidden */
+}
+
+/* --- Controls --- */
+.gui-control {
+    margin-bottom: 18px; /* Increased spacing */
+    display: flex;
+    flex-direction: column;
+}
+.gui-control:last-child {
+    margin-bottom: 0;
+}
+
+.gui-control label {
+    font-size: 13px;
+    font-weight: var(--font-weight-regular);
+    margin-bottom: 8px; /* More space between label and control */
+    color: var(--text-color-secondary);
+}
+
+/* Common styles for inputs, selects */
+.gui-control input[type="range"],
+.gui-control input[type="text"],
+.gui-control input[type="color"],
+.gui-control select {
+    width: 100%;
+    padding: 10px 12px; /* Comfortable padding */
+    border: 1px solid var(--control-border);
+    background-color: var(--control-bg);
+    border-radius: var(--radius-small);
+    font-family: var(--font-family-main);
+    font-size: 14px;
+    color: var(--text-color-primary);
+    box-sizing: border-box;
+    transition: background-color var(--transition-duration-fast) ease-out, border-color var(--transition-duration-fast) ease-out, box-shadow var(--transition-duration-fast) ease-out;
+}
+
+.gui-control input[type="range"]:hover,
+.gui-control input[type="text"]:hover,
+.gui-control input[type="color"]:hover,
+.gui-control select:hover {
+    background-color: var(--control-bg-hover);
+}
+
+.gui-control input[type="text"]:focus,
+.gui-control input[type="color"]:focus,
+.gui-control select:focus {
+    outline: none;
+    background-color: var(--control-bg-hover);
+    border-color: var(--text-color-accent); 
+    box-shadow: 0 0 0 2px var(--focus-ring-color);
+    transition: background-color var(--transition-duration-fast) var(--ease-out-smooth), 
+                border-color var(--transition-duration-fast) var(--ease-out-smooth), 
+                box-shadow var(--transition-duration-fast) var(--ease-out-smooth);
+}
+
+/* Range Input (Slider) */
+.gui-control input[type="range"] {
+    padding: 0; 
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent; 
+    cursor: pointer;
+    outline: none; /* Ensure no focus outline on the slider itself */
+}
+
+.gui-control input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 6px;
+    background: var(--control-bg);
+    border-radius: var(--radius-pill);
+    transition: background-color var(--transition-duration-fast) ease-out;
+}
+.gui-control input[type="range"]:hover::-webkit-slider-runnable-track {
+    background: var(--control-bg); /* Explicitly keep default background on hover */
+}
+
+.gui-control input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -7px;
+    width: 20px;
+    height: 20px;
+    background: var(--button-unified-bg);
+    border: 1px solid rgba(0,0,0,0.04);
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15), 0 1px 2px rgba(0,0,0,0.1);
+    transition: transform var(--transition-duration-fast) var(--ease-out-spring), background-color var(--transition-duration-fast) var(--ease-out-smooth);
+}
+.gui-control input[type="range"]:hover::-webkit-slider-thumb {
+    background: var(--button-unified-bg-hover);
+    transform: scale(1.15);
+}
+
+.gui-control input[type="range"]:active::-webkit-slider-thumb {
+    transform: scale(1.05); 
+    background-color: var(--button-unified-bg-hover);
+}
+
+/* Firefox Slider Styles */
+.gui-control input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 6px;
+    background: var(--control-bg);
+    border-radius: var(--radius-pill);
+    border: none;
+    transition: background-color var(--transition-duration-fast) ease-out;
+}
+.gui-control input[type="range"]:hover::-moz-range-track {
+    background: var(--control-bg); /* Explicitly keep default background on hover */
+}
+
+.gui-control input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: var(--button-unified-bg);
+    border: 1px solid rgba(0,0,0,0.04);
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15), 0 1px 2px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform var(--transition-duration-fast) var(--ease-out-spring), background-color var(--transition-duration-fast) var(--ease-out-smooth);
+}
+.gui-control input[type="range"]:hover::-moz-range-thumb {
+    background: var(--button-unified-bg-hover);
+    transform: scale(1.1);
+}
+.gui-control input[type="range"]:active::-moz-range-thumb {
+    transform: scale(1.05); 
+    background: var(--button-unified-bg-hover);
+}
+
+
+.gui-control span {
+    font-size: 12px;
+    color: var(--text-color-secondary);
+    margin-top: 6px;
+    align-self: flex-end;
+    font-weight: var(--font-weight-regular);
+}
+
+/* Checkbox */
+.gui-control input[type="checkbox"] {
+    /* Custom checkbox would be needed for true iOS style, for now, basic styling */
+    width: auto;
+    margin-right: 8px;
+    vertical-align: middle;
+    transform: scale(1.2);
+    accent-color: var(--text-color-accent);
+}
+.gui-control.horizontal label {
+    margin-right: 8px;
+    margin-bottom: 0;
+}
+
+/* Buttons */
+.gui-control button,
+.gui-button-like { 
+    display: inline-block;
+    padding: 10px 16px;    
+    font-size: 14px;       
+    font-weight: var(--font-weight-medium);
+    /* color: var(--text-color-on-accent); /* Base color set by specific rule below */
+    background-color: var(--control-accent-bg);
+    border: none;
+    border-radius: var(--radius-small);
+    cursor: pointer;
+    text-align: center;
+    transition: background-color var(--transition-duration-fast) ease-out,
+                transform var(--transition-duration-fast) var(--ease-out-spring),
+                box-shadow var(--transition-duration-medium) var(--ease-out-smooth);
+    user-select: none; 
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    background-color: var(--button-unified-bg);
+    color: var(--button-unified-text-color);
+    transition: background-color var(--transition-duration-fast) ease-out,
+                transform var(--transition-duration-fast) var(--ease-out-spring),
+                box-shadow var(--transition-duration-medium) var(--ease-out-smooth),
+                color var(--transition-duration-fast) ease-out;
+}
+
+/* Ensure the text color for button-like labels is correct, overriding general label color */
+.gui-control label.gui-button-like {
+    color: var(--button-unified-text-color);
+}
+
+.gui-control button:hover,
+.gui-button-like:hover {
+    background-color: var(--button-unified-bg-hover);
+    color: var(--button-unified-text-color);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 2px 5px rgba(0,0,0,0.08);
+}
+
+.gui-control button:active,
+.gui-button-like:active {
+    background-color: var(--button-unified-bg-active);
+    color: var(--button-unified-text-color);
+    transform: translateY(0px) scale(0.97);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* Specific button groups (like Save Preset) */
+.gui-control.input-button-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px; /* Space between theme toggle and minimize button */
+}
+.gui-control.input-button-group input[type="text"] {
+    flex-grow: 1;
+    margin-right: 8px;
+    margin-bottom: 0; /* Remove bottom margin if in a group */
+}
+.gui-control.input-button-group button {
+    flex-shrink: 0;
+    min-width: 36px;
+    min-height: 30px;
+    background: var(--button-unified-bg);
+    color: var(--button-unified-text-color);
+    transition: background-color var(--transition-duration-fast) ease-out,
+                transform var(--transition-duration-fast) var(--ease-out-spring),
+                color var(--transition-duration-fast) ease-out;
+}
+
+/* Status text within a control (e.g., for image loading) */
+.gui-status-text {
+    font-size: 11px;
+    color: var(--text-color-secondary);
+    margin-top: 4px; /* Small top margin */
+    line-height: 1.3;
+}
+
+/* File Input - Basic Restyle (can be improved) */
+#fileInputContainer {
+    display: flex; /* Use flex to manage items inside */
+    flex-direction: column; /* Stack label, input (hidden), and status text */
+    align-items: stretch; /* Make label/button stretch if needed */
+    /* background: transparent; */ /* Ensure no conflicting background */
+    /* padding: 0; */ /* Ensure no conflicting padding */
+}
+
+/* Styling for the actual <input type="file"> element if needed */
+#fileInputContainer input[type="file"] {
+    display: none;
+}
+
+/* Ensure label for file input matches other labels */
+#fileInputContainer label {
+    /* Already covered by general .gui-control label styles */
+}
+
+/* Image status text now uses .gui-status-text */
+#imageStatus {
+    width: 100%; /* Ensure it takes full width if items are stretched */
+}
+
+
+/* Style for subsections like Physics */
+.gui-subsection-title {
+    font-size: 13px;
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-color-secondary);
+    margin-top: 20px;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--section-border-color);
+}
+.gui-subsection-title:first-of-type {
+    margin-top: 0;
+}
+
+/* Scrollbar Styling */
+.gui-content::-webkit-scrollbar {
+    width: 12px; /* Wider for easier grabbing if needed, but mostly hidden by design */
+}
+.gui-content::-webkit-scrollbar-track {
+    background: transparent; /* Transparent track */
+}
+.gui-content::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: var(--radius-pill);
+    border: 3px solid transparent; /* Creates padding around thumb */
+    background-clip: content-box; /* Important for border to act as padding */
+}
+.gui-content::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover);
+}
+
+/* Basic responsiveness for the panel */
+@media (max-width: 480px) {
+    #custom-gui-container {
+        width: calc(100% - 20px); /* Full width with small margin */
+        top: 10px;
+        right: 10px;
+        bottom: 10px; /* Allow it to use more height */
+        max-height: calc(100vh - 20px);
+    }
+    .gui-header h2 {
+        font-size: 16px;
+    }
+}
+
+/* Style for the new label acting as a button */
+.gui-button-like {
+    display: inline-block; /* Or block, depending on desired layout */
+    background-color: var(--control-accent-bg);
+    color: var(--text-color-on-accent);
+    border: none;
+    padding: 10px 15px;
+    border-radius: var(--radius-small);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    transition: background-color var(--transition-duration-fast) ease-out, transform var(--transition-duration-fast) ease-out;
+    text-align: center;
+    margin-bottom: 5px; /* Add some space below it before the status text */
+}
+
+.gui-button-like:hover {
+    background-color: var(--control-accent-bg-hover);
+    transform: translateY(-1px);
+}
+
+.gui-button-like:active {
+    transform: translateY(0px);
+    background-color: var(--control-accent-bg);
+}
+
+.gui-control input[type="color"] {
+    -webkit-appearance: none; /* Remove default appearance (important for Chrome/Safari) */
+    -moz-appearance: none;    /* Remove default appearance (Firefox) */
+    appearance: none;         /* Remove default appearance */
+    width: 100%; /* Make it take the full width of its container */
+    height: 30px; /* Make it a "thick bar" */
+    border: 1px solid var(--control-border); /* Consistent border with other controls */
+    border-radius: var(--radius-small);
+    padding: 0; /* Remove any default padding that might interfere */
+    cursor: pointer;
+    background-color: transparent; /* Ensure we don't double-draw the color initially */
+}
+
+.gui-control input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0; /* Remove any padding around the swatch */
+    border-radius: var(--radius-small); /* Match the input's border-radius */
+}
+
+.gui-control input[type="color"]::-webkit-color-swatch {
+    border: none; /* Remove any border from the swatch itself */
+    border-radius: var(--radius-small); /* Match the input's border-radius */
+}
+
+.gui-control input[type="color"]::-moz-color-swatch {
+    border: none;
+    border-radius: var(--radius-small);
+    width: 100%; /* Attempt to make FF swatch fill */
+    height: 100%;
+}
+
+/* --- Container for multiple buttons in a row (e.g. preset actions) --- */
+.preset-actions {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Distribute space */
+    gap: 8px; /* Spacing between buttons, replaces individual margins */
+}
+
+.preset-actions button {
+    flex-grow: 1; /* Make all buttons share width equally */
+    flex-basis: 0; /* Important for flex-grow to work as expected */
+    margin-right: 0 !important; /* Override existing inline styles if any */
+}
+
+/* Optional: if you want to ensure the last button doesn't have margin from older rules */
+/* .preset-actions button:last-child {
+    margin-right: 0;
+} */
+
+/* Ensure the text color for button-like labels is correct, overriding general label color */
+.gui-control label.gui-button-like {
+    color: var(--button-unified-text-color);
+}
+
+/* Active state for toggle buttons like debug mask */
+.gui-button-like.active {
+    background-color: var(--control-accent-bg-dark-theme); /* Use a distinct accent, e.g., dark theme accent */
+    color: var(--text-color-on-accent-dark-theme);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); /* Inset shadow for pressed look */
+}
+
+.gui-button-like.active:hover {
+    background-color: var(--control-accent-bg-hover-dark-theme);
+}
+
+/* Playback icon button specific styling (optional, if needed) */
+.playback-icon-button {
+    font-size: 18px; /* Larger icons */
+    padding: 8px 10px; /* Adjust padding for icon buttons */
+    min-width: 44px; /* Ensure good tap area */
+    min-height: 40px;
+}
+
+/* --- Responsive Media Query --- */
+@media (max-width: 800px) { /* Adjust breakpoint as needed */
+    #app-container {
+        flex-direction: column; /* Stack them vertically */
+        overflow-y: auto; /* Allow vertical scrolling for the entire app */
+        height: auto; /* Allow container to grow with content */
+        min-height: 100vh; /* Ensure it still tries to fill viewport */
+    }
+
+    #video-section-container {
+        width: 100%;
+        position: relative; /* For absolute positioning of canvas inside */
+        /* height will be controlled by padding-bottom based on aspect ratio, set by JS */
+        height: 0; /* Required for padding-bottom to work for aspect ratio */
+        /* min-height: 200px; REMOVED */
+        /* max-height: 45vh;  REMOVED */
+        flex-grow: 0;      
+        /* display: flex; justify-content: center; align-items: center; REMOVED */
+        overflow: hidden;   /* Clip canvas if it somehow overflows */
+    }
+
+    #animationCanvas { /* Ensure canvas fills the container in mobile view */
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    #custom-gui-container {
+        width: 100%;
+        height: auto; /* Let content define height, or a fixed portion */
+        max-height: 60vh; /* Increased slightly, adjust as needed */
+        flex-shrink: 1; /* Allow shrinking if content is too large */
+        /* overflow-y: auto;  Ensured by .gui-content scrolling */
+    }
+
+    .gui-panel {
+       height: 100%; /* Panel should fill its container */
+       max-height: 100%; /* Ensure it doesn't overflow its container */
+       display: flex; /* Ensure flex context for .gui-content */
+       flex-direction: column;
+    }
+
+    .gui-content { /* Ensure scrollbar appears in the content area of the panel */
+        overflow-y: auto;
+        flex-grow: 1; /* Allow content to take available space and scroll */
+    }
+} 
+
+/* --- Individual Control Adjustments --- */
+/* ... existing code ... */
+#toggleSoftnessModeButton,
+#invertMaskButton,
+#debugMaskToggleButton {
+    width: 100%;
+    margin-top: 8px; /* Add some space above these full-width buttons */
+    user-select: none; /* Prevent text selection when dragging nearby slider */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE/Edge */
+}
+
+/* Playback Controls Container */
+/* ... existing code ... */ 
